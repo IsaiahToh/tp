@@ -335,6 +335,11 @@ Key points:
 
 <puml src="diagrams/CombinedCommandSequenceDiagram.puml" width="700" />
 
+<box type="info" seamless>
+
+**Note:** The lifeline for `CombinedCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+</box>
+
 1. `AddressBookParser` identifies `combined` and delegates to `CombinedCommandParser`.
 2. Parser validates inputs, builds the appropriate sub-predicates, and constructs `CombinedCommand`.
 3. On `execute`, `CombinedCommand` applies the combined predicate to `Model#updateFilteredPersonList` and returns a result containing either the count or a no-results message.

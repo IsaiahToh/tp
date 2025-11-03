@@ -60,7 +60,7 @@
               <TitledPane text="add" expanded="false">
                 <VBox spacing="5">
                   <Label text="Adds a recipient to the Organ-izer." />
-                  <Label text="Format: add n/NAME p/PHONE e/EMAIL a/ADDRESS o/ORGAN b/BLOOD TYPE r/PRIORITY"/>
+                  <Label text="Format: add n/NAME p/PHONE e/EMAIL a/ADDRESS o/ORGAN b/BLOOD_TYPE r/PRIORITY"/>
                   <Label text= "[en/EMERGENCY_NAME] [ep/EMERGENCY_PHONE] [er/EMERGENCY_RELATION] [t/TAG]..."/>
                   <Label text="Tab to auto-create all required and optional prefixes for the add command." />
                 </VBox>
@@ -69,7 +69,7 @@
               <TitledPane text="edit" expanded="false">
                 <VBox spacing="10">
                   <Label text="Edits existing recipient at INDEX." />
-                  <Label text="Format : edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/ORGAN] [b/BLOOD TYPE] [r/PRIORITY]"/>
+                  <Label text="Format : edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/ORGAN] [b/BLOOD_TYPE] [r/PRIORITY]"/>
                   <Label text= "[ep/EMERGENCY_PHONE] [er/EMERGENCY_RELATION] [t/TAG]..."/>
                 </VBox>
               </TitledPane>
@@ -91,7 +91,7 @@
               <TitledPane text="bloodtype" expanded="false">
                 <VBox spacing="5">
                   <Label text="Finds and lists all recipients whose blood type matches the specified blood types." />
-                  <Label text="Format : bloodtype BLOODTYPE [MORE_BLOODTYPES]..." />
+                  <Label text="Format : bloodtype BLOOD_TYPE [MORE_BLOOD_TYPES]..." />
                 </VBox>
               </TitledPane>
 
@@ -123,15 +123,15 @@
                   <Label text="Finds and lists all recipients that match all specified criteria :" />
                   <Label text="NAME, if included will find recipients with the exact NAME." />
                   <Label text="KEYWORD, if included will find recipients with organ containing the KEYWORD ." />
-                  <Label text="BLOODTYPE, if included will find recipients who can receive the BLOODTYPE." />
-                  <Label text="Format : combined [n/EXACT_NAME] [o/ORGAN_KEYWORD] [b/BLOODTYPE]" />
+                  <Label text="BLOOD_TYPE, if included will find recipients who can receive the BLOOD_TYPE." />
+                  <Label text="Format : combined [n/EXACT_NAME] [o/ORGAN_KEYWORD] [b/BLOOD_TYPE]" />
                 </VBox>
               </TitledPane>
 
               <TitledPane text="compatible" expanded="false">
                 <VBox spacing="5">
-                  <Label text="Finds and lists all recipients that can receive BLOODTYPE." />
-                  <Label text="compatible BLOODTYPE" />
+                  <Label text="Finds and lists all recipients that can receive BLOOD_TYPE." />
+                  <Label text="compatible BLOOD_TYPE" />
                 </VBox>
               </TitledPane>
 

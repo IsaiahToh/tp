@@ -917,10 +917,20 @@ Use case ends. <br><br>
 5. **Provide a more comprehensive summary feature.** Currently, our summary feature only displays a statistic of how many recipients require each organ.  
    We plan to do a breakdown in terms of blood type as well as priority, making use of visual aids (charts, diagrams). This will allow an organ donor coordinator to easily visualize the distribution of
    recipients by the various metrics to make more informed logistical and medical decisions.
-.
-6. **New Window for summary view.** Currently, our summary feature displays the overview of how many recipients require each organ in the `ResultDisplay` panel. New commands will repopulate the panel and cause the summary to disappear.  
+
+6.  **Implement a more comprehensive phone number validation when adding or editing recipients.** Currently, validation method only checkss for 8 digit length and invalid 8 digit phone numbers may slip through.
+    We plan to call an API to check against valid registered phone numbers in Singapore.
+
+7. **Implement a more stringent invalid prefix check in parser.** Currently, our prefix check might let wrong prefixes slip through if it is the last prefix.
+   For example, add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 o/kidney b/O+ r/1 w/ will result in Priority field error, instead of invalid command format.
+
+8. **Implement a more stringent email validation check.** Currently, email is only checked by regex, which will let some invalid edge cases slip through.
+   We plan to include additional validation through sending verification emails.
+
+9. **New Window for summary view.** Currently, our summary feature displays the overview of how many recipients require each organ in the `ResultDisplay` panel. New commands will repopulate the panel and cause the summary to disappear.  
    We plan to instead have this displayed in a new window so that it can be shown side by side along their other browser tools, rather than the small and confined `ResultDisplay` panel. This will also allow
-   for a better view over all the recipients and in a more versatile way that can be treated as its own window to be placed alongside the Organ-izer application, and prevent new commands from causing the summary to disappear.
+
+for a better view over all the recipients and in a more versatile way that can be treated as its own window to be placed alongside the Organ-izer application, and prevent new commands from causing the summary to disappear.
 ## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.

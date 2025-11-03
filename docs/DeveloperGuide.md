@@ -12,8 +12,34 @@
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
+This project was **forked** from [se-edu/addressbook-level3](https://github.com/se-edu/addressbook-level3) under the **MIT License**. It extends the original work with additional features and functionalities inspired by CRM-style client and booking management systems.
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+### Third-Party Libraries
+- **JavaFX** — used for the graphical user interface.  
+  [https://openjfx.io](https://openjfx.io)
+- **Jackson** — used to serialize and deserialize JSON data
+  [https://github.com/FasterXML/jackson](https://github.com/FasterXML/jackson)
+- **JUnit 5** — used to perform unit and integration testing.  
+  [https://junit.org/junit5](https://junit.org/junit5)
+
+### Development Tools
+- **Gradle** — for build automation and dependency management.  
+  [https://gradle.org](https://gradle.org)
+- **GitHub Pages** — for project documentation hosting.  
+  [https://pages.github.com](https://pages.github.com)
+- **PlantUML** — for generated UML diagrams used in documentation.  
+  [https://plantuml.com](https://plantuml.com)
+- **MarkBind** — for formatting and publishing the user and developer guides.  
+  [https://markbind.org](https://markbind.org)
+- **GitHub Actions (CI)** — for continuous integration/ continuous deployment (CI/CD) and automated build testing.  
+  [https://github.com/features/actions](https://github.com/features/actions)
+
+### AI Assistance
+- **ChatGPT (OpenAI)** — assisted with conceptual explanations and documentation organization.  
+  [https://chat.openai.com](https://chat.openai.com)
+- **GitHub Copilot** — provided inline code suggestions and boilerplate generation.  
+  [https://github.com/features/copilot](https://github.com/features/copilot)\
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -73,7 +99,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 The UI component is the stakeholder responsible for the graphical user interface seen by the user.
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts (e.g., `CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc). All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
 #### Overview
 
@@ -139,7 +165,7 @@ How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
+1. The command can communicate with the `Model` when it is executed (e.g., to delete a person).<br>
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
@@ -181,7 +207,7 @@ These validations ensure that only well-formed, valid commands are executed agai
 The following design considerations were maintained during implementation:
 
 Command formats should be **simple and short**:
-* This reflects our [non-functional](#non-functional-requirements) requirement that a non-technical user must be able to learn how to operate the app quickly.
+* This reflects our [non-functional](#non-functional-requirements) requirement that a non-technical user must be able to learn how to operate the app.
 * We split up our various search commands to simplify the work of remembering various abstract prefixes.
 * For the add command which was inevitably long, we provided command completion with <kbd>Tab</kbd> to circumvent the issue.
 
@@ -200,7 +226,7 @@ Entering commands should be **fast**:
 The `Model` component,
 
 * stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g., the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -230,7 +256,7 @@ The Model component enforces the following constraints on person data:
 
 These validations maintain data integrity and prevent invalid recipient information from being stored.
 
-####Responsibilities
+#### Responsibilities
 
 * **Data Management**: Holds and manages all application data, including the `AddressBook` containing recipient information and `UserPrefs` for user preferences.
 * **Data Validation**: Ensures data integrity through validation of person attributes using regex patterns.
@@ -266,8 +292,8 @@ These validations ensure that storage files are accessible, properly formatted, 
 #### Responsibilities
 
 * **File Management**: Manages two separate storage files, namely `addressbook.json` for recipient data and `preferences.json` for user settings such as window size.
-* **Data Conversion**: Converts between domain objects (eg. `Person` and `Tag`) and JSON-adapted objects (eg. `JsonAdaptedPerson`, `JsonAdaptedTag`) for serialisation and deserialisation.
-* **Error Handling**: Handles file I/O exceptions (eg. missing files, access denied, corrupted data) and provides appropriate error messages to the application.
+* **Data Conversion**: Converts between domain objects (e.g., `Person` and `Tag`) and JSON-adapted objects (e.g., `JsonAdaptedPerson`, `JsonAdaptedTag`) for serialisation and deserialisation.
+* **Error Handling**: Handles file I/O exceptions (e.g., missing files, access denied, corrupted data) and provides appropriate error messages to the application.
 * **Storage Coordination**: Implements the `Storage` interface through`StorageManager` to coordinate between `AddressBookStorage` and `UserPrefsStorage` operations.
 
 ### Common classes
@@ -308,6 +334,11 @@ Key points:
 #### Sequence of parsing and execution (Combined)
 
 <puml src="diagrams/CombinedCommandSequenceDiagram.puml" width="700" />
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `CombinedCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+</box>
 
 1. `AddressBookParser` identifies `combined` and delegates to `CombinedCommandParser`.
 2. Parser validates inputs, builds the appropriate sub-predicates, and constructs `CombinedCommand`.
@@ -372,7 +403,7 @@ The following sequence diagram shows how an undo operation goes through the `Log
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+**Note:** The lifeline for `UndoCommand` and `AddressBookParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
 
@@ -410,11 +441,11 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+  * Pros: Will use less memory (e.g., for `delete`, just save the person being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
 * **Alternative 3:** Save changes to address book as a separate log.
-  * Pros: Will use less memory (e.g. for `edit`, just remember the changes to the specific person).
+  * Pros: Will use less memory (e.g., for `edit`, just remember the changes to the specific person).
   * Cons: The implementation of a `diff` and rollback operations can be complex.
 
 #### Future Extensions
@@ -435,7 +466,7 @@ The import process involves reading Excel sheets, validating their contents, and
 
 **Key operations:**
 
-* `ImportCommand#execute()` — handles user invocation of the `import` command, e.g. `import f/data.xlsx`
+* `ImportCommand#execute()` — handles user invocation of the `import` command, e.g., `import f/data.xlsx`
 * `ExcelReader#readExcelFile(Path filePath)` — reads `.xlsx` files using Apache POI (or a similar library)
 * `ExcelParser#parseRows(List<Row> rows)` — parses each row, validates format, and converts them into `Person` entities
 * `Model#addPerson(Person person)` — adds each parsed `Person` to the in-memory `AddressBook`
@@ -443,7 +474,7 @@ The import process involves reading Excel sheets, validating their contents, and
 
 #### Example user workflow
 
-1. The user places an Excel file (e.g. `donors.xlsx`) in the application directory.
+1. The user places an Excel file (e.g., `donors.xlsx`) in the application directory.
 2. The user enters:
    ```  
    import f/donors.xlsx  
@@ -475,7 +506,7 @@ The Excel file is expected to contain a header row with the following columns:
 #### Validation and error handling
 
 The system enforces strict input validation to maintain data integrity:
-* Rows with missing mandatory fields (e.g. Name, Blood Type) are skipped.
+* Rows with missing mandatory fields (e.g., Name, Blood Type) are skipped.
 * Invalid blood types or malformed emails are logged as warnings.
 * The command result summarizes both successful and failed imports.
 
@@ -494,6 +525,8 @@ Each skipped row produces a corresponding warning in the log:
 6. `Storage#saveAddressBook()` persists the updated state.
 
 <puml src="diagrams/ImportExcelDetailedSequence.puml" width="750" />  
+
+**Note:** The lifeline for `ExcelReader` and `ExcelParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
 
 #### Design considerations
 
@@ -573,6 +606,58 @@ Each `DonorRecipientPair` contains:
 | Recipient.requiredOrgan | Organ required |
 | Recipient.priority | Priority for organ allocation |
 
+**Donors and recipients may be incompatible individually**, necessitating multi-way swaps to achieve successful matches.  
+
+#### Activity workflow  
+
+<puml src="diagrams/OrganSwapCycleActivityDiagram.puml" width="700" />  
+
+The workflow involves:  
+
+1. Adding donor-recipient pairs.  
+2. Storing them in the Model.  
+3. Running the Compatibility Engine to generate potential exchange chains.  
+4. Reviewing chains for approval.  
+
+#### Sequence of interactions  
+
+<puml src="diagrams/OrganSwapCycleSequenceDiagram.puml" width="700" />  
+
+1. The Coordinator interacts with the UI to register pairs.  
+2. UI delegates actions to `LogicManager`.  
+3. `LogicManager` saves data via the `Model`.  
+4. `LogicManager` calls `CompatibilityEngine#findSwap()`.  
+5. `CompatibilityEngine` retrieves pair data from `StorageManager` via `Model`, evaluates compatibility, and returns potential chains to `LogicManager`.  
+6. `LogicManager` updates the UI with the results for the Coordinator.  
+
+#### Design considerations  
+
+**Aspect: Matching algorithm**  
+
+* **Current choice:** Use graph-based cycle detection to find all possible multi-way exchanges.  
+* Pros: Can detect complex n-way swaps, maximizes donor-recipient matches.  
+* Cons: Computationally heavier for very large datasets.  
+
+* **Alternative:** Greedy 2-way swaps only.  
+* Pros: Simple and fast.  
+* Cons: Less optimal; some recipients may remain unmatched.  
+
+**Aspect: Chain approval**  
+
+* **Current choice:** Coordinator reviews suggested chains before approval.  
+* Pros: Human oversight reduces risk of errors.  
+* Cons: Requires manual intervention.  
+
+* **Alternative:** Auto-approve chains based on compatibility rules.  
+* Pros: Fully automated.  
+* Cons: Risk of mistakes in complex edge cases.
+
+#### Future extensions  
+
+* **Multi-organ swaps** — extend system to handle simultaneous swaps of multiple organ types.    
+* **Priority-based optimization** — factor in recipient priority scores to maximize urgency-based matching.  
+* **GUI visualization** — display swap cycles graphically for easy review by coordinators.  
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -630,67 +715,73 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 (For all use cases below, the **System** is the `Organ-izer` and the **Actor** is the `Coordinator`, unless specified otherwise)
 
 **Use Case UC01: Add new recipient**
-Main Success Scenario (MSS):
+
+**MSS**
 
 1. Coordinator enters add command syntax and user inputs.
 2. Organ-izer validates the recipient details.
 3. Organ-izer adds recipient to the database.
-4. Organ-izer displays success message.
+4. Organ-izer displays success message.<br><br>
 Use case ends. <br><br>
 
-Extensions :
-- 1a. Coordinator enters the <kbd> tab </kbd> key.
-    1a1. Organ-izer populates command bar with the command syntax.
-    1a2. User enters recipient details.
-    Use case resumes from step 2.<br>
-- 2a. Organ-izer detects invalid recipient details.
-2a1. Organ-izer displays error message.
-Use case ends.<br>
-- 2b. Organizer detects duplicate recipient.
-  2b1. Organ-izer displays error message.
-  Use case ends.
+**Extensions**
+- 1a. Coordinator enters the <kbd> tab </kbd> key.<br>
+    - 1a1. Organ-izer populates command bar with the command syntax.
+    - 1a2. User enters recipient details.<br><br>
+    Use case resumes from step 2.<br><br>
+- 2a. Organ-izer detects invalid recipient details.<br>
+    - 2a1. Organ-izer displays error message.<br><br>
+      Use case ends.<br><br>
+- 2b. Organizer detects duplicate recipient.<br>
+    - 2b1. Organ-izer displays error message.<br><br>
+      Use case ends.<br><br>
 
 **Use Case UC02: Edit recipient details**
-Main Success Scenario (MSS):
+
+**MSS**
 
 1. Coordinator enters recipient details to change.
 2. Organ-izer validates the recipient details.
 3. Organ-izer updates recipient details.
-4. Organ-izer displays success message.
+4. Organ-izer displays success message.<br><br>
 Use case ends. <br><br>
-Extensions :
+
+**Extensions**
 - 1a. Organ-izer detects invalid recipient details.
-- 1a1. Organ-izer displays error message.
-  Use case ends.<br>
+  - 1a1. Organ-izer displays error message.<br><br>
+    Use case ends.<br><br>
 - 1b. Organ-izer detects invalid index.
-- 1b1. Organ-izer displays error message.
-  Use case ends.<br>
+  - 1b1. Organ-izer displays error message.<br><br>
+  Use case ends.<br><br>
 
 **Use Case UC03: Delete recipient**
-Main Success Scenario (MSS):
+
+**MSS**
 
 1. Coordinator requests to delete recipient.
 2. Organ-izer validates the user's request.
 3. Organ-izer deletes recipient.
 4. Organ-izer displays success message.<br><br>
 Use case ends. <br><br>
-Extensions:
-- 1a User requests to delete at an invalid index
-  1a1. organ-izer displays error message.
-  Use case ends.<br>
-- 
+
+**Extensions**
+- 1a. User requests to delete at an invalid index
+  - 1a1. organ-izer displays error message.<br><br>
+  Use case ends.<br><br>
+  
 **Use Case UC04: View all recipients**
-Main Success Scenario (MSS):
+
+**MSS**
 
 1. Coordinator requests to view all recipients.
-2. Organ-izer displays a list of all recipients.
+2. Organ-izer displays a list of all recipients.<br><br>
 Use case ends. <br><br>
 
 **Use Case UC05: Find recipients by organ**
 1. Coordinator requests to find recipients by organ field.
 2. Organ-izer validates the search criteria.
-3. Organ-izer searches the system and displays recipients that match the criteria.
-
+3. Organ-izer searches the system and displays recipients that match the criteria.<br><br>
+Use case ends.<br><br>
 
 **Use Case UC06: Find recipients by blood type**
 Same as UC05.<br>
@@ -708,22 +799,29 @@ Same as UC05.<br>
 Same as UC05.<br>
 
 **Use Case UC08: View statistic summary**
-Main Success Scenario (MSS):
+
+**MSS**
 
 1. User requests to view a summary of all recipients.
-2. Organ-izer displays summary of recipients.
+2. Organ-izer displays summary of recipients.<br><br>
    Use case ends. <br><br>
 
 **Use Case UC09: Delete all recipients**
+
+**MSS**
+
 1. Coordinator requests to delete all recipients.
 2. Organ-izer deletes all recipients.
-3. Organ-izer displays success message.
+3. Organ-izer displays success message.<br><br>
    Use case ends. <br><br>
 
-**Use Case UC10: Redo previous command**
-1. Coodinator requests previous command.
-2. Organ-izer populates the command bar with the user's last command.
+**Use Case UC10: Access previous command**
 
+**MSS**
+
+1. Coordinator requests previous command.
+2. Organ-izer populates the command bar with the user's last command.<br><br>
+Use case ends. <br><br>
 
 
 
@@ -750,14 +848,16 @@ Main Success Scenario (MSS):
 - All data must be stored locally in a human-editable text file format.
 9. **Performance**
 - Must be able to hold up to 100 recipients without a noticeable sluggishness in performance for typical usage. 
-  The system must be able to respond to any command within 1 second under normal conditions
+  The system must be able to respond to any command within 1 second under normal conditions.
 10. **Reliability**
 - The application must not crash during normal operations and must recover gracefully from unexpected errors.
 11. **Usability**
-- The application must be easy to use for healthcare professionals without technical background. (<30 minutes)
+- The application must be easy to use for healthcare professionals without a technical background. (<30 minutes)
 12. **Internet Independence**
-- The application must be able to be used without an internet connection. Command summary must be provided in application so 
-  that user will not have to refer to online documentation for regular use.
+- The application must be able to be used without an internet connection. Command summary must be provided in the application so 
+  that users will not have to refer to online documentation for regular use.
+13. **Operation Speed**
+- For a user of average typing speed and mouse control, they must be able to operate the application faster than a traditional mouse-based GUI
 
 ### Glossary
 
@@ -798,7 +898,7 @@ Main Success Scenario (MSS):
 * **ObservableList**: A list that allows UI components to automatically update when data changes.
 
 --------------------------------------------------------------------------------------------------------------------
-## **Appendix: Enhancements
+## Appendix: Enhancements
 
 1. **Implement more extensive filter cache**. Currently, our program saves the filtered list of only the last `search` command executed by user.
    We plan to store the resulting filtered lists of all our various filtering functions such that users can refer to previous filtered results easily through a key command.
@@ -807,14 +907,14 @@ Main Success Scenario (MSS):
    We plan to implement tab completion feature for all relevant commands such as `combined`, `edit`, etc, such that users will not have to get caught up in remembering the syntax, and can simply press tab to quickly autofill all prefixes.
 
 3. **Combine all our various search commands into one function.** Currently, we have different commands like `bloodtype`, `compatible`, `organ` to search for
-   recipients using various filters. Our plan is to make a universal search function that will incorporate flags and 
-   allow users to filter by whichever fields and strictness (exact match, partial match, fuzzy search), they want to.
+   recipients using various filters.  
+   We plan to make a universal search function that will incorporate flags and allow users to filter by whichever fields and strictness (exact match, partial match, fuzzy search) they want to.
 
-4. **Extend the functionality of the last command feature.** Currently, users can press the <kbd>Up</kbd> arrow key to access the last executed command.
+4. **Extend the functionality of the last command feature.** Currently, users can press the <kbd>Up</kbd> arrow key to access the last executed command.  
    We intend to extend the feature to store more commands, such that pressing the <kbd>Up</kbd> arrow key multiple times, will allow users to navigate
    all previous commands, saving time.
 
-5. **Provide a more comprehensive summary feature.** Currently, our summary feature only displays a statistic of how many recipients require each organ.
+5. **Provide a more comprehensive summary feature.** Currently, our summary feature only displays a statistic of how many recipients require each organ.  
    We plan to do a breakdown in terms of blood type as well as priority, making use of visual aids (charts, diagrams). This will allow an organ donor coordinator to easily visualize the distribution of
    recipients by the various metrics to make more informed logistical and medical decisions.
 
@@ -827,6 +927,10 @@ Main Success Scenario (MSS):
 8. **Implement a more stringent email validation check.** Currently, email is only checked by regex, which will let some invalid edge cases slip through.
    We plan to include additional validation through sending verification emails.
 
+9. **New Window for summary view.** Currently, our summary feature displays the overview of how many recipients require each organ in the `ResultDisplay` panel. New commands will repopulate the panel and cause the summary to disappear.  
+   We plan to instead have this displayed in a new window so that it can be shown side by side along their other browser tools, rather than the small and confined `ResultDisplay` panel. This will also allow
+
+for a better view over all the recipients and in a more versatile way that can be treated as its own window to be placed alongside the Organ-izer application, and prevent new commands from causing the summary to disappear.
 ## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
@@ -986,7 +1090,7 @@ testers are expected to do more *exploratory* testing.
    2. Test case: open the help page by `help`.<br>
       Expected: The help page is automatically opened as another window. Clicking on any of the drop-downs reveals the documentation of the corresponding command.
       
-## Command summary
+### Command summary
 
 #### Viewing Recipients
 
@@ -994,12 +1098,12 @@ Action  | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **List all recipients**   | `list`
 **Summary of organs needed**   | `summary`
-**Filter recipients by blood type**   | `bloodtype BLOOD_TYPE [MORE_BLOOD_TYPES]...`, eg. `bloodtype A+ B+`
-**Filter recipients by organ**   | `organ ORGAN`, eg. `organ liver`
-**Filter recipients by priority**   | `priority PRIORITY [MORE_PRIORITIES]...`, eg. `priority 1 2 3`
-**Search for a recipient by name**   | `search KEYWORD [MORE_KEYWORDS]...`, eg. `search John`
-**Combined search using name, organ, and/or blood type**   | `combined [n/NAME] [o/ORGAN] [b/BLOOD_TYPE]`, eg. `combined n/Alice o/kidney b/O+`
-**Find recipients compatible with a blood type**   | `compatible BLOOD_TYPE`, eg. `compatible O-`
+**Filter recipients by blood type**   | `bloodtype BLOOD_TYPE [MORE_BLOOD_TYPES]...`, e.g., `bloodtype A+ B+`
+**Filter recipients by organ**   | `organ ORGAN`, e.g., `organ liver`
+**Filter recipients by priority**   | `priority PRIORITY [MORE_PRIORITIES]...`, e.g., `priority 1 2 3`
+**Search for a recipient by name**   | `search KEYWORD [MORE_KEYWORDS]...`, e.g., `search John`
+**Combined search using name, organ, and/or blood type**   | `combined [n/NAME] [o/ORGAN] [b/BLOOD_TYPE]`, e.g., `combined n/Alice o/kidney b/O+`
+**Find recipients compatible with a blood type**   | `compatible BLOOD_TYPE`, e.g., `compatible O-`
 
 #### Modifying Recipients
 
@@ -1017,7 +1121,7 @@ Action  | Format, Examples
 **Exit the application**   | `exit`
 **View help** | `help`
 
-### Appendix: Effort
+## Appendix: Effort
 
 #### Difficulty Level
 
@@ -1030,19 +1134,19 @@ These domain-specific requirements, coupled with maintaining AB3's architectural
 #### Challenges Faced
 
 * **Unexpected Bug Findings**: During development and testing, we encountered several edge cases that weren't initially anticipated. For instance, the blood type compatibility logic initially failed when users entered mixed-case inputs (e.g., "aB+" vs "AB+"), requiring us to implement comprehensive case-insensitive validation. These instances arose in separate occasions such as mixed-case input organ fields as well. Furthermore, overlooked components such as the `ResultDisplay` caused other bugs to surface such as edits to emergency contact fields not being shown in the result panel but are still displayed in the `PersonListPanel`.
-* **Lack of Experience in Medical Contexts**: None of our team members had prior experience with healthcare systems or organ transplant coordination workflows. This created a steep learning curve in combining our understanding of blood type compatibility rules with user friendly commands and functionalities. A balance between overly medical related logic and objective driven functionalities had to be struck before deciding on the scope of the project.
+* **Lack of Experience in Medical Contexts**: None of our team members had prior experience with healthcare systems or organ transplant coordination workflows. This created a steep learning curve in combining our understanding of blood type compatibility rules with user-friendly commands and functionalities. A balance between overly medical related logic and objective driven functionalities had to be struck before deciding on the scope of the project.
 * **Testing Complexity**: Achieving comprehensive test coverage for Organ-izer proved significantly more challenging than typical AB3 extensions. The blood compatibility matrix alone required testing 64 possible donor-recipient combinations (8 blood types x 8 blood types), while the CombinedCommand needed tests for all permutations of name, organ, and blood type filters. Creating realistic test data in `TypicalPersons` that covered edge cases, including different blood types, all priority levels, various organs, valid and invalid emergency contacts, required careful planning. Maintaining test maintainability while achieving ~80% coverage demanded disciplined use of test utilities and avoiding overly coupled tests that would break with implementation changes.
-* **Time Management**: Coordinating five team members, with external commitments, working on parallel features while meeting weekly milestones proved challenging. We faced several Git merge conflicts when multiple members simultaneously modified core files like JsonAdaptedPerson, AddressBookParser, and PersonBuilder. Feature dependencies (e.g., CompatibleCommand requiring blood type validation, CombinedCommand depending on existing filter predicates) meant some tasks blocked others, requiring careful task sequencing. Additionally, underestimating the complexity of certain features, particularly the edits needed to create new fields and commands, led to schedule adjustments. Balancing feature implementation with comprehensive testing and documentation within the project timeframe required prioritization decisions and sometimes deferring "nice-to-have" features to ensure core functionality was robust and well-tested.
+* **Time Management**: Coordinating five team members with external commitments, working on parallel features while meeting weekly milestones, proved challenging. We faced several Git merge conflicts when multiple members simultaneously modified core files like JsonAdaptedPerson, AddressBookParser, and PersonBuilder. Feature dependencies (e.g., CompatibleCommand requiring blood type validation, CombinedCommand depending on existing filter predicates) meant some tasks blocked others, requiring careful task sequencing. Additionally, underestimating the complexity of certain features, particularly the edits needed to create new fields and commands, led to schedule adjustments. Balancing feature implementation with comprehensive testing and documentation within the project timeframe required prioritization decisions and sometimes deferring "nice-to-have" features to ensure core functionality was robust and well-tested.
 
 #### Effort and Achievements
 
-Despite facing several challenges, our group was overcomeable to complete our Organ-izer
-* **Product Delivery**: Delivered a working product that satisfies key objectives of aiding Organ Transplant coordinators attain speed and accuracy in their work.
-* **Preservation of architecture**: Successfully extended AB3’s immutable model design while incorporating medical workflows such as filtering recipients by organ or blood type.
+Despite facing several challenges, our group was able to complete Organ-izer
+* **Product Delivery**: Delivered a working product that satisfies key objectives of aiding organ transplant coordinators in attaining speed and accuracy in their work.
+* **Preservation of Architecture**: Successfully extended AB3's immutable model design while incorporating medical workflows such as filtering recipients by organ or blood type.
 * **Utility and Functionality**: Added on functionalities to improve User Experience (UX) such as Tab key auto completions to provide ease in keying in commands, and commands for statistical summaries to give an overview over the recipients in the application database.
 * **Comprehensive Testing**: Ensured testing robustness with over 200+ unit and integration tests on the Organ-izer functionalities.  
   
-With these achievements, an effective and comprehensive application is developed to aid in organ transplant medical workflows.
+With these achievements, an effective and comprehensive application was developed to aid in organ transplant medical workflows.
 
 #### Reuse of Existing Components
 
@@ -1071,4 +1175,4 @@ Overall estimate: 40-50% development effort saved, allowing focus on domain-spec
 
 #### Summary
 
-The development of Organ-izer demonstrates that building a specialized medical application on top of AB3 requires a careful balance between leveraging existing infrastructure and implementing domain-specific innovations. While AB3's solid architectural foundation saved our team approximately **40-50% of development effort**, the remaining **50-60%** demanded significant original work to address the unique challenges of organ transplant coordination. Although several challenges were faced that may have hindered the development process and efficiency, the team has still provided a functional and effective product that covers the identified and targeted needs from organ transplant coordinators.
+The development of Organ-izer demonstrates that building a specialized medical application on top of AB3 requires a careful balance between leveraging existing infrastructure and implementing domain-specific innovations. While AB3's solid architectural foundation saved our team approximately **40-50% of development effort**, the remaining **50-60%** demanded significant original work to address the unique challenges of organ transplant coordination. Although several challenges were faced that hindered the development process and efficiency, the team has still provided a functional and effective product that covers the identified and targeted needs of organ transplant coordinators.

@@ -38,7 +38,7 @@ This project was **forked** from [se-edu/addressbook-level3](https://github.com/
 - **ChatGPT (OpenAI)** — assisted with conceptual explanations and documentation organization.  
   [https://chat.openai.com](https://chat.openai.com)
 - **GitHub Copilot** — provided inline code suggestions and boilerplate generation.  
-  [https://github.com/features/copilot](https://github.com/features/copilot)\
+  [https://github.com/features/copilot](https://github.com/features/copilot)
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -576,19 +576,19 @@ Each **pair** consists of a **donor** and a **recipient.**
 If the algorithm manages to find a **swap**, then a `Swap` object is created.
 The diagram below illustrates the relationships between the various objects involved in a 3-way kidney exchange.
 <br><br>
-![iobjectdiagram](OrganSwapCycleObjectDiagram.puml)
+
+<puml src="diagrams/OrganSwapCycleObjectDiagram.puml" width="350" />  
+
 <br><br>
 
 
 
 
-The organ swap process involves adding donor-recipient pairs, evaluating blood type and organ compatibility, generating possible exchange chains.
-
 **Key operations:**
 
 * `LogicManager#execute(String)`: handles parsing the user command to begin adding the new recipient-donor pair.
 * `Model#addPair(Recipient, Donor)`: stores the input pair in memory and persists via storage.
-* `CompatibilityEngine#findSwap()`: computes all possible swap chains based on compatibility rules and retrieved pairs from the model.
+* `CompatibilityEngine#findSwap()`: computes all possible swaps based on compatibility rules and retrieved pairs from the model.
 * `Model#getPairs()`: retrieves all registered pairs for matching.
 
 
@@ -610,14 +610,14 @@ Each `DonorRecipientPair` contains:
 
 #### Activity workflow  
 
-<puml src="diagrams/OrganSwapCycleActivityDiagram.puml" width="700" />  
+<puml src="diagrams/OrganSwapCycleActivityDiagram.puml" width="350" />  
 
 The workflow involves:  
 
 1. Adding donor-recipient pairs.  
 2. Storing them in the Model.  
-3. Running the Compatibility Engine to generate potential exchange chains.  
-4. Reviewing chains for approval.  
+3. Running the Compatibility Engine to generate potential swaps.  
+4. Reviewing swaps for approval.  
 
 #### Sequence of interactions  
 
@@ -627,14 +627,14 @@ The workflow involves:
 2. UI delegates actions to `LogicManager`.  
 3. `LogicManager` saves data via the `Model`.  
 4. `LogicManager` calls `CompatibilityEngine#findSwap()`.  
-5. `CompatibilityEngine` retrieves pair data from `StorageManager` via `Model`, evaluates compatibility, and returns potential chains to `LogicManager`.  
+5. `CompatibilityEngine` retrieves pair data from `StorageManager` via `Model`, evaluates compatibility, and returns potential swaps to `LogicManager`.  
 6. `LogicManager` updates the UI with the results for the Coordinator.  
 
 #### Design considerations  
 
 **Aspect: Matching algorithm**  
 
-* **Current choice:** Use graph-based cycle detection to find all possible multi-way exchanges.  
+* **Current choice:** Use graph-based cycle detection to find all possible multi-way swaps.  
 * Pros: Can detect complex n-way swaps, maximizes donor-recipient matches.  
 * Cons: Computationally heavier for very large datasets.  
 
@@ -642,13 +642,13 @@ The workflow involves:
 * Pros: Simple and fast.  
 * Cons: Less optimal; some recipients may remain unmatched.  
 
-**Aspect: Chain approval**  
+**Aspect: Swap approval**  
 
-* **Current choice:** Coordinator reviews suggested chains before approval.  
+* **Current choice:** Coordinator reviews suggested swaps before approval.  
 * Pros: Human oversight reduces risk of errors.  
 * Cons: Requires manual intervention.  
 
-* **Alternative:** Auto-approve chains based on compatibility rules.  
+* **Alternative:** Auto-approve swaps based on compatibility rules.  
 * Pros: Fully automated.  
 * Cons: Risk of mistakes in complex edge cases.
 

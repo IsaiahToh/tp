@@ -8,7 +8,7 @@
 
 <!-- * Table of Contents -->
 <page-nav-print />
-
+<div style="page-break-after: always;"></div>
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
@@ -786,19 +786,19 @@ Use case ends.<br><br>
 **Use Case UC06: Find recipients by blood type**
 Same as UC05.<br>
 
-**Use Case UC06: Find recipients by compatible blood type**
+**Use Case UC07: Find recipients by compatible blood type**
 Same as UC05.<br>
 
-**Use Case UC07: Find recipients by priority**
+**Use Case UC08: Find recipients by priority**
 Same as UC05.<br>
 
-**Use Case UC07: Find recipients by name**
+**Use Case UC09: Find recipients by name**
 Same as UC05.<br>
 
-**Use Case UC08: Find recipients by multiple criteria**
+**Use Case UC10: Find recipients by multiple criteria**
 Same as UC05.<br>
 
-**Use Case UC08: View statistic summary**
+**Use Case UC11: View statistic summary**
 
 **MSS**
 
@@ -806,7 +806,7 @@ Same as UC05.<br>
 2. Organ-izer displays summary of recipients.<br><br>
    Use case ends. <br><br>
 
-**Use Case UC09: Delete all recipients**
+**Use Case UC12: Delete all recipients**
 
 **MSS**
 
@@ -815,7 +815,7 @@ Same as UC05.<br>
 3. Organ-izer displays success message.<br><br>
    Use case ends. <br><br>
 
-**Use Case UC10: Access previous command**
+**Use Case UC13: Access previous command**
 
 **MSS**
 

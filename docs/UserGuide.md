@@ -70,9 +70,9 @@ If you wish to navigate this page quickly, feel free to use the **table of conte
 3. Run **Organ-izer** by typing `java -jar organ-izer.jar` into the terminal and pressing <kbd>Enter</kbd>. <br>
 
 
-A screen similar to the one below should be visible after a few seconds. Note that the app contains some sample data.<br><br>
+A screen similar to the one below should be visible after a few seconds. Note that the app contains some sample data.<br>
 ![Ui](images/Ui.png)
-<br><br>
+<br>
 
 7. To start, try typing `list` in the command box at the top and press enter to execute it.<br>
    **If it is your first time using the application, it will not display any data**.
@@ -193,13 +193,13 @@ Restrictions: It should be a whole number from 1 to 5.
 ### Features
 ### Viewing help: `help`
 
-Shows a help page with brief command descriptions.<br><br>
+Shows a help page with brief command descriptions.<br>
 
-![help message](images/helpGui.png)   <br><br>
+![help message](images/helpGui.png)   <br>
 
 Format: `help`
 
-<br><br><br>
+<br>
 
 ### Adding a recipient: `add`
 
@@ -221,7 +221,7 @@ Format: `add n/NAME p/PHONE e/EMAIL a/ADDRESS o/ORGAN b/BLOOD_TYPE r/PRIORITY [e
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 o/kidney b/O+ r/1 en/Jane Doe ep/91234567 er/spouse t/wife t/owesMoney`
-<br><br>
+<br>
 ### Tab Completion for `add` command
 
 Auto creates all required and optional prefixes for the `add` command.
@@ -235,9 +235,9 @@ Format: Type `add` ,then press the <kbd>tab</kbd> key
 </box>
 
 Examples:
-* Typing `add` followed by pressing <kbd>tab</kbd> will populate the command box as such :<br><br>
+* Typing `add` followed by pressing <kbd>tab</kbd> will populate the command box as such :<br>
   ![TAB image](images/TAB.png)
-  <br><br><br>
+  <br>
 ### Editing a recipient : `edit`
 
 Edits an existing recipient in **Organ-izer**.
@@ -249,7 +249,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/ORGAN] [b/BLOOD 
 **Note:** 
 * Edits the recipient at the specified `INDEX`. The index refers to the index number shown in the displayed recipient list. The index **must be a positive integer** such as 1, 2, 3, …<br><br>​
 
-![TAB image](images/INDEX.png)<br><br>
+![TAB image](images/INDEX.png)<br>
 
 * **At least one** of the optional user inputs must be provided.
 * Existing recipient details will be updated to the new user inputs.
@@ -265,13 +265,13 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com en/Bobby ep/12345678` Edits the phone number and email address of the 1st recipient to be `91234567` and `johndoe@example.com` respectively. This also adds an emergency contact named “Bobby” with contact number “12345678” to the recipient’s details.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd recipient to be `Betsy Crower` and clears all existing tags.
 * `edit 1 en/ ep/` removes the emergency contact from the 1st recipient.
-<br><br><br>
+<br>
 ### Listing all recipients : `list`
 
 Shows a list of all recipients in the Organ-izer.
 
 Format: `list`
-<br><br><br>
+<br>
 ### Finding recipients by name: `search`
 
 Finds recipients in **Organ-izer** whose names contain all the given keywords, in any order.
@@ -291,7 +291,7 @@ Format: `search KEYWORD [MORE_KEYWORDS]...`
 Examples:
 * `search John` will match with and display recipients named `john` and `John Doe`.
 * `search Doe John` will match with and display recipients named `John Doe.
-<br><br><br>
+<br>
 ### Finding recipients by organ : `organ`
 
 Finds and lists all recipients in **Organ-izer** whose required organ contains the ORGAN entered by the user.
@@ -309,7 +309,7 @@ Examples:
 * `organ kidne` Finds all recipients in **Organ-izer** whose organ required contains the word “kidne”, such as recipients who require a kidney.
 * `organ large` Finds all recipients in **Organ-izer** whose organ required contains the word “large”, such as recipients who require a “large intestine”.
 
-<br><br><br>
+<br>
 ### Finding recipients by priority : `priority`
 
 Finds and lists all recipients in **Organ-izer** whose priority matches the specified priorities.
@@ -327,7 +327,7 @@ Examples:
 * `priority 1 2` Finds all recipients in **Organ-izer** whose priority is either `1` or `2`.
 * `priority 3` Finds all recipients in **Organ-izer** whose priority is 3.
 
-<br><br><br>
+<br>
 
 ### Finding recipients by blood type : `blood type`
 
@@ -347,7 +347,7 @@ Examples:
 * `bloodtype O+ A+` Finds all recipients in **Organ-izer** whose blood type is either `O+` or `A+`.
 * `bloodtype AB+` Finds all recipients in **Organ-izer** whose blood type is AB+.
 
-<br><br><br>
+<br>
 
 ### Finding recipients by compatible blood types: `compatible`
 
@@ -359,8 +359,8 @@ Format: `compatible BLOOD_TYPE`
 <markdown>
 **Note:** 
 * Compatibility refers to whether the recipient’s blood type is such that he can **receive from**
-  the provided donor `BLOOD_TYPE`, as illustrated below: <br><br>
-  ![TAB image](images/BLOODTYPECHART.jpg)<br><br>
+  the provided donor `BLOOD_TYPE`, as illustrated below: <br>
+  ![TAB image](images/BLOODTYPECHART.jpg)<br>
 </markdown>
 </box>
 
@@ -369,7 +369,7 @@ Examples:
 
 
 
-<br><br><br>
+<br>
 
 
 ### Finding recipients by multiple criteria: `combined`
@@ -408,7 +408,7 @@ Examples:
 
 
 
-<br><br><br>
+<br>
 
 ### Deleting a recipient : `delete`
 
@@ -429,7 +429,7 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd recipient in **Organ-izer**.
 * `find Betsy` followed by `delete 1` deletes the 1st recipient in the results of the `find` command.
 
-  <br><br><br>
+  <br>
 
 ### ⚠️Deleting all recipients : `clear`
 <box type="note" seamless>
@@ -443,7 +443,7 @@ Deletes *all* recipients from **Organ-izer**.
 
 Format: `clear`<br>
 
-<br><br><br>
+<br>
 
 ### Statistic summary : `summary`
 
@@ -461,7 +461,7 @@ LUNG            : 1 patient(s)
 
 Total           : 3 patient(s)
 ```
-<br><br><br>
+<br>
 
 ### Access last command :
 
@@ -473,14 +473,14 @@ Populates command bar with the last command executed by user.
 </box>
 Format: Press the <kbd>Up</kbd> arrow key. 
 
-<br><br>
+<br>
 
 ### Exiting the program : `exit`
 
 Exits the application.
 
 Format: `exit`
-<br><br><br>
+<br>
 ### Restore last search
 
 After reopening the app, search results from the last search command will be shown.
@@ -492,7 +492,7 @@ After reopening the app, search results from the last search command will be sho
 * Calling `list` after `search KEYWORD` will **undo the search filter**, so closing and reopening the app will **not* restore the search result.
 </markdown>
 </box>
-<br><br>
+<br>
 
 ### Saving the data
 
@@ -538,7 +538,7 @@ Furthermore, certain edits can cause the Organ-izer to behave in unexpected ways
 
 --------------------------------------------------------------------------------------------------------------------
 
-<br><br>
+<br>
 ## Command summary
 
 #### Viewing Recipients

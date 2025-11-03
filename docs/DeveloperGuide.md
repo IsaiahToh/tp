@@ -577,7 +577,7 @@ If the algorithm manages to find a **swap**, then a `Swap` object is created.
 The diagram below illustrates the relationships between the various objects involved in a 3-way kidney exchange.
 <br><br>
 
-<puml src="diagrams/OrganSwapCycleObjectDiagram.puml" width="350" />  
+<puml src="diagrams/OrganSwapCycleObjectDiagram.puml" width="700" />  
 
 <br><br>
 

@@ -378,13 +378,6 @@ Finds and lists all recipients in **Organ-izer** that match **all** specified cr
 
 Format: `combined [n/NAME] [o/ORGAN] [b/BLOOD_TYPE]`
 
-<box type="note" seamless>
-<markdown>
-**Note:** 
-
-</markdown>
-</box>
-
 <box type="info" seamless>
 <markdown>
 * **At least one** of the optional user inputs must be provided, which are `NAME`, `ORGAN`, or `BLOOD_TYPE`.
@@ -405,8 +398,6 @@ Examples:
 * `combined n/Alice o/kidney b/O+` Find all recipients with name `Alice`, whose organ required contains the word “kidne”, and has blood type `O+`.
 * `combined n/Bob ` Finds all recipients named`Bob`, but will not find `Bobby`.
   `combined o/heart b/A+` Find all recipients whose organ required contains the word “heart” and can receive A+ blood.
-
-
 
 <br>
 

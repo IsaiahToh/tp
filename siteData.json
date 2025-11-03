@@ -54,6 +54,7 @@
         "noteworthy-features-combined-search-and-blood-type-compatibility": "Noteworthy features: Combined search and blood type compatibility",
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
         "proposed-importing-of-excel-spreadsheets": "[Proposed] Importing of Excel Spreadsheets",
+        "proposed-organ-swap-systems": "[Proposed] Organ Swap Systems",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -78,7 +79,8 @@
         "finding-all-persons-compatible": "Finding all persons compatible",
         "finding-all-persons-satisfying-multiple-criteria": "Finding all persons satisfying multiple criteria",
         "help": "Help",
-        "command-summary": "Command summary"
+        "command-summary": "Command summary",
+        "appendix-effort": "Appendix: Effort"
       },
       "headingKeywords": {}
     },
@@ -155,7 +157,7 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "organ-izer": "Organ-izer"
       },
       "headingKeywords": {}
     },

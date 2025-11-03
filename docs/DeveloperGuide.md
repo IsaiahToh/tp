@@ -817,8 +817,16 @@ Main Success Scenario (MSS):
 5. **Provide a more comprehensive summary feature.** Currently, our summary feature only displays a statistic of how many recipients require each organ.
    We plan to do a breakdown in terms of blood type as well as priority, making use of visual aids (charts, diagrams). This will allow an organ donor coordinator to easily visualize the distribution of
    recipients by the various metrics to make more informed logistical and medical decisions.
-.
-6. 
+
+6.  **Implement a more comprehensive phone number validation when adding or editing recipients.** Currently, validation method only checkss for 8 digit length and invalid 8 digit phone numbers may slip through.
+    We plan to call an API to check against valid registered phone numbers in Singapore.
+
+7. **Implement a more stringent invalid prefix check in parser.** Currently, our prefix check might let wrong prefixes slip through if it is the last prefix.
+   For example, add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 o/kidney b/O+ r/1 w/ will result in Priority field error, instead of invalid command format.
+
+8. **Implement a more stringent email validation check.** Currently, email is only checked by regex, which will let some invalid edge cases slip through.
+   We plan to include additional validation through sending verification emails.
+
 ## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.

@@ -144,7 +144,7 @@ If you wish to see a **brief explanation** of any command, simply click on the H
 * `BLOOD_TYPE` represents the recipient’s or donor’s **blood type**.<br>
   Restriction : It must be one of A+, A-, B+, B-, AB+, AB-, O+, O- only.
 
-*`PRIORITY` represents the **priority** level of the recipient, with 1 being the highest priority and 5 being the lowest. <br>
+* `PRIORITY` represents the **priority** level of the recipient, with 1 being the highest priority and 5 being the lowest. <br>
 Restrictions: It should be a whole number from 1 to 5.
 
 * `EMERGENCY_NAME` represents the **name** of the recipient’s **emergency contact**.<br>
@@ -165,9 +165,9 @@ Restrictions: It should be a whole number from 1 to 5.
 <markdown>
 **Notes about Duplicate Entries:**<br>
 
-* A new recipient with the **same phone number as an existing recipient** is considered to be a duplicate entry and cannot be added.
+* A new recipient with the **same name and phone number as an existing recipient** is considered to be a duplicate entry and cannot be added.
 
-* A new recipient with the **same name as an existing recipient** is **not** considered to be a duplicate entry, and can be added.
+* A new recipient with the **same name and different phone number as an existing recipient** is **not** considered to be a duplicate entry, and can be added.
   </markdown>
   </box>
   </markdown>
@@ -269,7 +269,7 @@ Format: `search KEYWORD [MORE_KEYWORDS]...`
 * The search is **case-insensitive**, e.g `hans` will match `Hans`.
 * If there are multiple keywords, the **order does not matter.** e.g. `search Hans Bo` will match `Bo Hans`.
 * Only **full words** will be matched e.g. `search Han` will not find recipient named `Hans`.
-* Only recipients matching **all keywords** will be returned. e.g. `search Hans Bo` will not find Hans, but only `Hans Bo`.
+* Only recipients matching **all keywords** will be returned. e.g. `search Hans Bo` will not find `Hans`, but only `Hans Bo` or `Bo Hans`.
 </markdown>
 </box>
 
@@ -545,7 +545,7 @@ Action 	| Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add a recipient**   	| `add n/NAME p/PHONE e/EMAIL a/ADDRESS o/ORGAN b/BLOOD_TYPE r/PRIORITY [en/EMERGENCY_NAME] [ep/EMERGENCY_PHONE] [er/EMERGENCY_RELATION] [t/TAG]...` <br> e.g., `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 o/kidney b/O+ r/1 en/Jane Doe ep/91234567 er/spouse t/wife t/owesMoney`
 **Delete a recipient** | `delete INDEX`<br> e.g., `delete 3`
-**Edit a recipient’s details**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/ORGAN] [b/BLOOD TYPE] [r/PRIORITY] [en/EMERGENCY_NAME] [ep/EMERGENCY_PHONE] [er/EMERGENCY_RELATION] [t/TAG]...`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit a recipient’s details**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/ORGAN] [b/BLOOD_TYPE] [r/PRIORITY] [en/EMERGENCY_NAME] [ep/EMERGENCY_PHONE] [er/EMERGENCY_RELATION] [t/TAG]...`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 ⚠️ **Clear all recipients**  | `clear` Note: **this will clear all recipients in the application.**
 
 #### Utility Functions

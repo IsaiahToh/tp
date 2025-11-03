@@ -378,8 +378,9 @@ Finds and lists all recipients in **Organ-izer** that match **all** specified cr
 
 Format: `combined [n/NAME] [o/ORGAN] [b/BLOOD_TYPE]`
 
-<box type="info" seamless>
+<box type="note" seamless>
 <markdown>
+**Note:**
 * **At least one** of the optional user inputs must be provided, which are `NAME`, `ORGAN`, or `BLOOD_TYPE`.
 If included,
 - `NAME` will find recipients with that **exact** **name**.

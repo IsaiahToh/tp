@@ -451,7 +451,11 @@ Total           : 3 patient(s)
 ### Access last command :
 
 Populates command bar with the last command executed by user.
-
+<box type="tip" seamless>
+<markdown>
+**Tip:** Pressing the <kbd>Up</kbd> arrow key **multiple times** will allow user to navigate to earlier commands.
+</markdown>
+</box>
 Format: Press the <kbd>Up</kbd> arrow key. 
 
 <br><br>
